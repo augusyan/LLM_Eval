@@ -1,90 +1,12 @@
-# Firefly(流萤): 中文对话式大语言模型
+# LLM-UIE: A unified information extraction framework with large language model
 
 <div align="left">
+本项目来自魔改[Firefly框架](https://github.com/yangjianxin1/Firefly)
 
-![GitHub Repo stars](https://img.shields.io/github/stars/yangjianxin1/Firefly?style=social)
-[![Generic badge](https://img.shields.io/badge/微信交流群-Firefly-brightgreen?logo=wechat)](./pics/wechat-group.jpeg)
-[![Generic badge](https://img.shields.io/badge/🤗-Huggingface%20Repo-green.svg)](https://huggingface.co/YeungNLP)
-
-[//]: # ([![Generic badge]&#40;https://img.shields.io/badge/微信-Firefly-brightgreen?logo=wechat&#41;]&#40;./pics/wechat.jpeg&#41;)
-</div>
-
-<img src="pics/firefly_logo.png" width="250">
-
-欢迎加入Firefly大模型技术交流群，关注我们的公众号，点击加群按钮即可。
-
-<img src="pics/gongzhonghao.png" width="300">
-
-
-
-## News
-- 🔥 支持微调百川Baichuan2模型。
-- 🔥 新增模型评测结果 & 4bit量化推理脚本 & 模型部署成http服务
-- 🔥 支持微调codellama模型，可用训练数据：[Open-Platypus](https://huggingface.co/datasets/garage-bAInd/Open-Platypus)、[computer_zh_26k](https://huggingface.co/datasets/shareAI/ShareGPT-Chinese-English-90k/blob/main/sharegpt_jsonl/computer_zh_26k.jsonl)、[computer_en_26k](https://huggingface.co/datasets/shareAI/ShareGPT-Chinese-English-90k/blob/main/sharegpt_jsonl/computer_en_26k.jsonl)
-
-<details><summary><b>往期News</b></summary>
-
-- 🔥 开源Firefly项目多轮对话微调的[firefly-internlm-7b](https://huggingface.co/YeungNLP/firefly-internlm-7b)，[Firefly-InternLM-7B生成样例](https://docs.qq.com/sheet/DU3JIcHJlSVZHS2Zl?tab=c5vlid)。
-- 🔥 开源[firefly-llama-30b](https://huggingface.co/YeungNLP/firefly-llama-30b),在[🤗Open LLM排行榜](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard)上以64.83分，同量级模型**排名第10**。
-- 🔥 开源Firefly项目多轮对话微调的[firefly-qwen-7b](https://huggingface.co/YeungNLP/firefly-qwen-7b)。
-- 🔥 支持微调[XVERSE-13B](https://huggingface.co/xverse/XVERSE-13B)。
-- 🔥 开源Firefly项目多轮对话微调的[firefly-chatglm2-6b](https://huggingface.co/YeungNLP/firefly-chatglm2-6b)。
-- 🔥 支持微调通义千问Qwen-7B，该模型在各个中英文榜单，表现非常优异。
-- 🔥 支持多轮对话微调ChatGLM2，**比官方的训练方法更加充分高效**（近期会进行源码分析）。当前微调了2500步的效果：[Firefly-ChatGLM2-6B生成样例](https://docs.qq.com/sheet/DU0NCbFp6UFpWb3pE?tab=d8ashk)
-- 🔥 开源[firefly-llama2-13b](https://huggingface.co/YeungNLP/firefly-llama2-13b)，在[🤗Open LLM排行榜](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard)上以62分，同量级模型**排名第三**，比榜首略低0.5分。
-- 🔥 开源[firefly-baichuan-13b](https://huggingface.co/YeungNLP/firefly-baichuan-13b)，使用一百万多轮对话数据，提升baichuan-13b的多轮对话能力。 [Firefly-Baichuan-13B生成样例](https://docs.qq.com/sheet/DU0lXUEZISVVwc3FG?tab=c5vlid)
-- 🔥 开源[firefly-llama-13b](https://huggingface.co/YeungNLP/firefly-llama-13b)，在[Hugging Face的Open LLM排行榜](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard)上复刻Vicuna-13B，比Vicuna-13b-1.1略高0.2分，比llams-2-13b-chat略低0.5分。
-- 🔥 支持训练LLaMA-2、ChatGLM2、Baichuan、通义千问Qwen-7B、书生·浦语InternLM、LLaMA、Ziya、Bloom等开源模型。
-- 🔥 发布Firefly项目教程：[微调百川Baichuan-13B保姆式教程，手把手教你训练百亿大模型](https://mp.weixin.qq.com/s/ZBY6kbogHjbCQvZBzNEqag)
-- 🔥 发布项目首个百亿参数规模的模型：[firefly-ziya-13b](https://huggingface.co/YeungNLP/firefly-ziya-13b) ，该模型使用百万指令数据进行微调。
-- 发布经过QLoRA微调的百川baichuan-7b模型。
-- 发布经过QLoRA微调的bloom-7b1模型。
-
-</details>
-
-## 文章链接
-- [Firefly多轮对话微调书生·浦语InternLM-7B实践](https://mp.weixin.qq.com/s/98OLdkHjoGDHNDbYL7RerA)
-- [🤗Firefly微调LLaMA-30B，Open LLM榜单同量级第10名](https://mp.weixin.qq.com/s/fFT0Pxfecma4n_fXQYb2Mw)
-- [通义千问Qwen-7B效果如何？Firefly微调实践，效果出色](https://mp.weixin.qq.com/s/5OAx83j6Op299XAfa496ww)
-- [源码解析ChatGLM2多轮对话训练方法的不足，以及改进方法](https://mp.weixin.qq.com/s/nhogoWnzl3nrs_77r38_UA)
-- [Firefly增强Baichuan-13B的多轮对话能力](https://mp.weixin.qq.com/s/djO8Tg3emmy6wzw_rTUlcw)
-- [🤗Open LLM排行榜，firefly-llama2-13b在所有13B模型中排名第三，比榜首略低0.5分](https://mp.weixin.qq.com/s/w1V3QGvsRTQsQqAKp2z6Kg)
-- [百万数据增强Baichuan-13B的多轮对话能力](https://mp.weixin.qq.com/s/djO8Tg3emmy6wzw_rTUlcw)
-- [Firefly单卡复刻Vicuna-13B，Open LLM榜单🤗略高0.2分](https://mp.weixin.qq.com/s/QG2YMo_QxaxS_Rr2yJrIeA)
-- [微调百川Baichuan-13B保姆式教程，手把手教你训练百亿大模型](https://mp.weixin.qq.com/s/ZBY6kbogHjbCQvZBzNEqag)
-- [Firefly-Ziya-13B开源，QLoRA+百万数据，单卡可训百亿大模型](https://mp.weixin.qq.com/s/vgNK6D-_0j4Chk2H1Ev-Ig)
-- [Firefly｜百川baichuan-7B实测，QLoRA+百万指令数据微调](https://mp.weixin.qq.com/s/_eTkDGG5DmxyWeiQ6DIxBw)
-- [Firefly | QLoRA+百万数据，多卡高效微调bloom-7b1模型](https://mp.weixin.qq.com/s/lA4YUJ9XGpKlUUUjz0Le-g)
-- [QLoRA文章解读 & 单卡高效微调bloom-7b1](https://mp.weixin.qq.com/s/DED7yeiE0DibsVzTmMeDOw)
-- [Firefly(流萤): 中文对话式大语言模型](https://mp.weixin.qq.com/s/TX7wj8IzD_EaMTvk0bjRtA)
-- [LLMPruner：大语言模型裁剪工具](https://mp.weixin.qq.com/s/leVtrwZc1zLput51Nr99lw)
-
-## 项目简介
-**Firefly(流萤)** 是一个开源的中文大语言模型项目，支持QLoRA和全量参数微调Baichuan2、CodeLLaMA、LLaMA2、LLaMA、Qwen、Baichuan、ChatGLM2、InternLM、Ziya、Bloom、XVERSE等开源模型。
-正如我们的项目名称一样，希望本项目能够像流萤一般发出淡淡微光，为中文大语言模型社区尽绵薄之力，促进中文大语言模型社区的发展。
-
-如果你的训练资源有限，我们极力推荐使用QLoRA的指令微调方式，因为我们在Open LLM Leaderboard上验证了该方法的有效性，详情见模型评测章节。
-
-
-**流萤**（萤火虫的别称）是中华传统文化的一个符号，虽说腐草为萤，带有悲悯意味，但萤火虽小，也能凭借其淡淡荧光，照亮夜空。本项目的名称取自杜牧的《秋夕》：**银烛秋光冷画屏，轻罗小扇扑流萤**。
-```text
-《咏萤火》 
- 唐.李白
-雨打灯难灭，
-风吹色更明。
-若飞天上去，
-定作月边星。
-```
-
-🔔 本项目主要内容如下：
-- 📗 支持全量参数指令微调、QLoRA低成本高效指令微调、其中QLoRA是我们主推的一种高效的训练方式。
-- 📗 支持绝大部分主流的开源大模型，如Baichuan2、CodeLLaMA、LLaMA2、LLaMA、Qwen、Baichuan、ChatGLM2、InternLM、Ziya、Bloom、XVERSE等。
-- 📗 支持lora与base model进行权重合并，推理更便捷。
-- 📗️ 模型裁剪：通过[LLMPruner：大语言模型裁剪工具](https://github.com/yangjianxin1/LLMPruner) ，开源[裁剪后的Bloom模型权重](https://huggingface.co/YeungNLP) 。在保留预训练中文知识的前提下，有效减少模型参数量，降低训练成本，提高训练效率。
-- 📗 整理并开源指令微调数据集：firefly-train-1.1M 、moss-003-sft-data、ultrachat、 WizardLM_evol_instruct_V2_143k、school_math_0.25M。
-- 📗 开源[Firefly系列指令微调模型权重](https://huggingface.co/YeungNLP) 。
-- 📗 在Open LLM Leaderboard上验证了QLoRA训练流程的有效性。
-
+## Update
+- 🔥 支持微调Baichuan2模型
+- 🔥 支持微调Qwen模型
+- 🔥 支持微调ChatGLM模型
 
 ## 模型评测
 **Open LLM Leaderboard和C-Eval榜单，倾向于评测大模型的做题能力，榜单成绩仅供参考，不具有全面评价各个模型的作用。**
@@ -112,9 +34,7 @@
 | guanaco-13b                 | 59.18   | 57.85 | 83.84     | 48.28 | 46.73      |
 
 Result：
-- 对于30B模型而言，firefly-llama-30b击败了falcon-40b-instruct、guanaco-33b等模型，比vicuna-33b-v1.3 略低0.16分。
-- 对于13B模型而言，firefly-llama2-13b-v1.2领先于vicuna-13b-v1.5、mpt-30b-chat、wizardlm-13b-v1.2、llama-2-13b-chat、guanaco-13b等模型。
-- 值得注意的是，firefly模型使用项目中的QLoRA训练流程，所使用的训练资源比榜单上的其他模型少得多，使用2~4张V100。
+
 
 ### C-Eval评测
 
@@ -146,55 +66,10 @@ Result：
 | linly-llama2-13b                 | 27.86  | 27.67 | 26.95          | 27.93      | 28.95 |
 
 
-评测说明：
-- C-Eval最终得分为所有数据集的平均分，而非各个学科的平均分。
-- 下表所有模型的得分，均由我们使用[OpenCompass](https://github.com/open-compass/opencompass)工具评测得出，所有模型一视同仁，均使用ppl的方式进行评测。其中ziya-llama-13b的分数来源于OpenCompass榜单。
-- 评测脚本位于script/evaluate目录下，需要结合OpenCompass工具一起使用。
 
-部分结论：
-- 在firefly系列模型中，firefly-baichuan-13b表现最佳，51.36分，超过了很多开源模型。
-- firefly-baichuan-13b、firefly-chatglm2-6b与其对应的官方的chat模型表现比较接近，差距在1分左右。
-- 即使使用同一份数据微调的模型，各模型的差距也比较大，例如firefly-internlm-7b与firefly-baichuan-7b相差了6.85分。
-- 出现了很多不太符合直觉的现象。qwen-7b-chat和internlm-7b-chat等7b模型碾压大多数13b模型，openbuddy的分数与其社区评价不相符，等等。
 
 
 ## 安装环境
-在requirements.txt下固定了几个主要的python包的版本，执行如下脚本即可。
-
-**注意：Baichuan2需要安装pytorch 2.0。除Baichuan2以外，其他模型的训练，我们均在torch==1.13上进行训练。**
-```bash
-pip install requirements.txt
-```
-
-## 模型列表
-
-🔔 使用本项目的训练代码，以及上述训练数据，我们训练并开源了以下模型。
-
-中文模型：
-
-| 模型                                                                           | 基座模型                                | Max Length |
-|------------------------------------------------------------------------------|-------------------------------------|------------|
-| [firefly-baichuan-13b](https://huggingface.co/YeungNLP/firefly-baichuan-13b) | baichuan-inc/Baichuan-13B-Base      |1024     |  
-| [firefly-qwen-7b](https://huggingface.co/YeungNLP/firefly-qwen-7b)           | Qwen/Qwen-7B                        |1024     |  
-| [firefly-chatglm2-6b](https://huggingface.co/YeungNLP/firefly-chatglm2-6b)   | THUDM/chatglm2-6b                   |1024     |  
-| [firefly-internlm-7b](https://huggingface.co/YeungNLP/firefly-internlm-7b)   | internlm/internlm-7b                |1024     |  
-| [firefly-baichuan-7b](https://huggingface.co/YeungNLP/firefly-baichuan-7b)   | baichuan-inc/baichuan-7B            |1024     |           
-| [firefly-ziya-13b](https://huggingface.co/YeungNLP/firefly-ziya-13b)         | YeungNLP/Ziya-LLaMA-13B-Pretrain-v1 |1024     |           
-| [firefly-bloom-7b1](https://huggingface.co/YeungNLP/firefly-bloom-7b1)       | bigscience/bloom-7b1                |   1024         |
-| [firefly-bloom-2b6-v2](https://huggingface.co/YeungNLP/firefly-bloom-2b6-v2) | YeungNLP/bloom-2b6-zh               |   512         |
-| [firefly-bloom-2b6](https://huggingface.co/YeungNLP/firefly-bloom-2b6)       | YeungNLP/bloom-2b6-zh               |    512        |
-| [firefly-bloom-1b4](https://huggingface.co/YeungNLP/firefly-bloom-1b4)       | YeungNLP/bloom-1b4-zh               | 512        |
-
-
-英文模型：
-
-| 模型                                                                               | 基座模型                               | Max Length |
-|----------------------------------------------------------------------------------|------------------------------------|------------|
-| [firefly-llama-30b](https://huggingface.co/YeungNLP/firefly-llama-30b)           | huggyllama/llama-30b                  |1024     |  
-| [firefly-llama-13-v1.2](https://huggingface.co/YeungNLP/firefly-llama2-13b-v1.2) | NousResearch/Llama-2-13b-hf              |1024     |  
-| [firefly-llama2-13b](https://huggingface.co/YeungNLP/firefly-llama2-13b)         | NousResearch/Llama-2-13b-hf           |1024     |           
-| [firefly-llama-13b-v1.2](https://huggingface.co/YeungNLP/firefly-llama-13b-v1.2) | huggyllama/llama-13b |1024     |           
-| [firefly-llama-13b](https://huggingface.co/YeungNLP/firefly-llama-13b)           | huggyllama/llama-13b              |   1024         |
 
 
 
@@ -212,40 +87,6 @@ pip install requirements.txt
 中文模型，建议使用moss数据进行微调，效果不错。
 
 训练数据为jsonl格式，每一行的数据格式如下，其中conversation字段是必需的，可以根据实际需求添加或删除其他字段。
-可以参考项目中的data/dummy_data.jsonl文件。
-```json
-{
-    "conversation_id":44,
-    "category":"Brainstorming",
-    "conversation":[
-        {
-            "human":"怎么能够有效地提升个人能力？",
-            "assistant":"提升个人能力可以通过以下几个方面实现：\n\n1. 学习新知识和技能：阅读相关书籍、参加课程和工作坊、观看教育视频等学习方式，可以帮助你掌握新的知识和技能，从而提升个人能力。\n\n2. 持续练习和实践：不断地练习和实践所学的知识和技能，可以帮助你更好地掌握和应用这些技能，提高你的表现和效率。\n\n3. 寻求反馈和改进：寻求他人的反馈和建议可以帮助你发现自己的不足之处，进一步完善和改进自己的能力。\n\n4. 建立良好的工作和生活习惯：建立良好的工作和生活习惯，如合理安排时间、注意健康、保持积极态度等，可以提高你的工作效率和生活品质，从而提升个人能力。\n\n5. 社交和交流：与他人交流和合作，可以帮助你更好地了解他人的观点和经验，从而提升自己的能力和见识。"
-        },
-        {
-            "human":"对于初学者来说，如何快速掌握编程技能？",
-            "assistant":"以下是几个建议，可以帮助初学者快速掌握编程技能：\n\n1. 学习基础知识：建议先学习编程语言的基础知识和语法，例如变量、数据类型、控制结构、函数等。可以通过在线课程、编程书籍、视频教程等方式学习。\n\n2. 实践编程：进行实际的编程练习是非常重要的，可以通过参加编程挑战、编写小项目等方式来进行实践。\n\n3. 寻求反馈：可以寻求他人的反馈和建议，例如在线编程社区、编程导师等，他们可以帮助你发现问题并及时纠正。\n\n4. 阅读优秀代码：阅读和分析优秀的代码可以帮助你学习其他程序员的编程思路和技巧，从而提高自己的编程能力。\n\n5. 不断学习和更新：编程技术和工具在不断更新和发展，因此需要不断学习新的知识和技能，例如学习新的编程语言、框架、工具等，以跟上技术的发展和变化。\n\n总之，学习编程需要耐心和坚持，并且需要不断地实践和学习。通过以上建议，可以帮助初学者快速掌握编程技能。"
-        },
-        {
-            "human":"除了参加编程挑战和阅读代码，还有哪些方式可以提升自己的编程能力呢？",
-            "assistant":"除了参加编程挑战和阅读代码，还有以下几种方式可以提升自己的编程能力：\n\n1. 参与开源项目：加入一个开源项目，可以让你了解到实际的软件开发流程和团队合作方式，并且可以与其他开发人员合作，学习和分享编程技巧和经验。\n\n2. 进行代码重构：对已经编写的代码进行重构，可以帮助你了解更好的编程实践和设计模式，从而提高代码的可读性和可维护性。\n\n3. 练习算法和数据结构：算法和数据结构是编程中的重要基础，练习算法和数据结构可以帮助你了解不同的数据结构和算法，从而更好地解决实际问题。\n\n4. 学习软件工程和架构：学习软件工程和架构的知识，可以帮助你了解如何设计和构建可靠、可扩展和可维护的软件系统。\n\n5. 参加编程社区和论坛：参加编程社区和论坛可以让你与其他开发人员分享和讨论编程经验和技巧，了解最新的技术趋势和解决方案。\n\n总之，提升编程能力需要不断地学习和实践，并与其他开发人员和编程专家进行交流和合作，以获取更多的经验和知识。"
-        },
-        {
-            "human":"你有没有推荐的编程挑战网站？",
-            "assistant":"当然，以下是一些值得推荐的编程挑战网站：\n\n1. HackerRank：HackerRank 是一个全球领先的技术招聘平台，提供数百种编程挑战和比赛，包括算法、数据结构、数学、SQL、AI 等多个技术领域。\n\n2. LeetCode：LeetCode 是一个在线编程学习和实践平台，提供数千道编程题目，主要涵盖算法和数据结构。\n\n3. Codeforces：Codeforces 是一个全球知名的编程竞赛网站，提供数百个比赛和练习题目，主要涵盖算法和数据结构。\n\n4. Codewars：Codewars 是一个在线编程学习和实践平台，提供数千道编程题目，主要涵盖算法、数据结构、面向对象编程等多个技术领域。\n\n5. Project Euler：Project Euler 是一个非营利性的在线编程挑战平台，提供一系列数学和计算机科学问题，需要用编程语言进行解答。\n\n以上这些编程挑战网站可以帮助你提高编程能力，并且可以与其他编程爱好者进行交流和竞争。"
-        },
-        {
-            "human":"在学习编程的过程中，如何避免陷入困境和放弃呢？",
-            "assistant":"学习编程是一个需要长期坚持和不断学习的过程，以下是一些避免陷入困境和放弃的方法：\n\n1. 制定合理的学习计划：制定合理的学习计划，包括学习时间、学习内容、目标等，可以帮助你更好地管理时间和精力，避免学习过程中的松懈和分心。\n\n2. 寻找合适的学习资源：选择适合自己的学习资源，例如在线课程、编程书籍、视频教程等，可以让你更好地了解和掌握编程知识和技能。\n\n3. 寻求帮助和支持：在学习过程中，遇到问题和困难是很正常的，可以寻求他人的帮助和支持，例如参加编程社区、找到编程导师等。\n\n4. 进行实践和项目：实践和项目是学习编程的重要组成部分，可以帮助你更好地了解和掌握编程技能，同时也可以提高学习的兴趣和动力。\n\n5. 坚持并保持兴趣：坚持学习和保持兴趣是学习编程的关键。可以通过参加编程社区、参加编程竞赛、与其他编程爱好者交流等方式来保持兴趣和动力。\n\n总之，学习编程需要耐心和坚持，并需要不断学习和实践。通过以上方法可以帮助你避免陷入困境和放弃。"
-        }
-    ],
-}
-```
-
-其中firefly-train-1.1M的数据分布如下图所示：
-
-<img src="pics/task_distribution.png" width="380"> 
-
 
 ## 模型训练
 目前支持全量参数指令微调、QLoRA指令微调。我们将训练中使用的各种组件抽取出来，以便后续的扩展和优化，详见component目录下的实现。训练时的参数配置存储在train_args目录下，方便统一管理和更改。大家可以在train_args目录下查看不同模型的训练配置。
