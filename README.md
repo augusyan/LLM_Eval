@@ -3,6 +3,13 @@
 <div align="left">
 本项目来自魔改[Firefly框架](https://github.com/yangjianxin1/Firefly)
 
+## TODO
+- [ ] 加入指令集筛选的控制，包括token计数（模型tokenizer的方法），类别数据分布统计，随机采样方法，指令多样化操作，n-shot demon和指令拼接操作，收集几个基础模型的chat和base的合理的prompt
+- [ ] 基于各个基础模型的循环调用单轮QA推理过程结果解析和保存分析，看看能否实现批量调用，以及vllm或者其他框架的推理加速
+- [ ] 单纯的instruct+task的测试功能，以及instruct+demonstration+task的测试
+- [ ] 
+- [ ] 
+
 ## Update
 - 🔥 支持微调Baichuan2模型
 - 🔥 支持微调Qwen模型
