@@ -9,7 +9,7 @@ __pycache__/
 *$py.class
 
 # special file
-*zhiyan*.py
+*zhiyan.py
 
 # C extensions
 *.so
