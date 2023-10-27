@@ -8,8 +8,13 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# special file
+*zhiyan*.py
+
 # C extensions
 *.so
+*.json
+*.jsonl
 
 # Distribution / packaging
 .Python

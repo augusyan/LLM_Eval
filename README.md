@@ -4,19 +4,30 @@
 本项目来自魔改[Firefly框架](https://github.com/yangjianxin1/Firefly)
 
 ## TODO
-- [ ] 加入指令集筛选的控制，包括token计数（模型tokenizer的方法），类别数据分布统计，随机采样方法，指令多样化操作，n-shot demon和指令拼接操作，收集几个基础模型的chat和base的合理的prompt
-- [ ] 基于各个基础模型的循环调用单轮QA推理过程结果解析和保存分析，看看能否实现批量调用，以及vllm或者其他框架的推理加速
-- [ ] 单纯的instruct+task的测试功能，以及instruct+demonstration+task的测试
-- [ ] 
-- [ ] 
+- [X] 加入指令集筛选的控制，包括token计数（模型tokenizer的方法），类别数据分布统计，随机采样方法，指令多样化操作，n-shot demon和指令拼接操作，收集几个基础模型的chat和base的合理的prompt
+- [X] 基于各个基础模型的循环调用单轮QA推理过程结果解析和保存分析，看看能否实现批量调用，以及vllm或者其他框架的推理加速
+- [X] 单纯的instruct+task的测试功能，以及instruct+demonstration+task的测试
+- [ ]
 
 ## Update
-- 🔥 支持微调Baichuan2模型
-- 🔥 支持微调Qwen模型
-- 🔥 支持微调ChatGLM模型
+- [ ] 🔥 支持微调Baichuan2模型
+
 
 ## 模型评测
 **Open LLM Leaderboard和C-Eval榜单，倾向于评测大模型的做题能力，榜单成绩仅供参考，不具有全面评价各个模型的作用。**
+基于KnowLM-IE数据集，测试国内外主流的大模型
+- [ ] 🔥 支持开源评测模型
+  - [ ] 支持Baichuan-7B/14-chat
+  - [ ] 支持Baichuan2-7B/13-chat
+  - [ ] 支持qwen-7B/13-chat
+  - [ ] 支持chatglm-6B/13-chat
+  - [ ] 支持chatgl2-6B/13-chat
+  - [X] 支持knowlm-13B-zhixi/ie
+  - 
+- [ ] 支持闭源评测模型
+  - [X] 支持chatglm-pro/std/lite
+  - [ ] 支持zhiyan-13B
+
 
 ### Open LLM Leaderboard评测
 评测结果来源于Hugging Face的[Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard)。
